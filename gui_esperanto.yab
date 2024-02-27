@@ -1,0 +1,157 @@
+REM Abaixo está o código para as especificações gráficas do programa.
+REM open window 800,600
+REM backcolour "0,0,0"
+REM clear window
+REM text_example$ = "malsatas"
+REM color "0,128,0"
+REM rectangle 50,100,150,140
+REM text 55,140,text_example$,"10x20"
+clear screen
+dim phrases$(100000)
+dim separatist$(1000)
+open #1,"esperanto_dictionary_real.txt","r"
+i = 1
+while not eof(#1)
+line input #1 n$
+if instr(n$,"—") >= 1 and (instr(n$,"[") <= 0 or instr(n$,"]") <= 0) then
+phrases$(i) = n$
+i = i + 1
+end if
+wend
+
+10 sentence$ = phrases$(round(ran(1000)))
+mid$(sentence$,instr(sentence$,"—"))=" "
+banana=split(sentence$,separatist$())
+dim aleatorios(10)
+aleatorios(1)=100:aleatorios(2)=200:aleatorios(3)=300:aleatorios(4)=400:aleatorios(5)=500:aleatorios(6)=600
+separatist$(2)=""
+aleatoriar1=aleatorios(round(ran(6)))
+aleatoriar2=round(ran(400))
+dim aleatoriarONE(100)
+dim aleatoriarTWO(100)
+
+for y = 1 to arraysize(separatist$(),1)
+aleatoriarONE(y) = aleatorios(round(ran(6)))
+aleatoriarTWO(y) = round(ran(400))
+next y
+
+
+sub lmp()
+open window 800,600
+backcolour "0,0,0"
+color "0,128,0"
+clear window
+rectangle 50,500,740,540
+for j = 1 to arraysize(separatist$(),1) 
+string$ = string$ + separatist$(j) + " "
+text aleatoriarONE(j),aleatoriarTWO(j),separatist$(j),"10x20"
+next j
+text 55,530,killing$,"10x20"
+text 300,450,mensagem$,"10x20"
+end sub
+
+
+
+do
+switch inkey$(0.1)
+case "a"
+killing$ = killing$ + "a"
+break
+case "b"
+killing$ = killing$ + "b"
+break
+case "c"
+killing$ = killing$ + "c"
+break
+case "d"
+killing$ = killing$ + "d"
+break
+case "e"
+killing$ = killing$ + "e"
+break
+case "f"
+killing$ = killing$ + "f"
+break
+case "g"
+killing$ = killing$ + "g"
+break
+case "h"
+killing$ = killing$ + "h"
+break
+case "i"
+killing$ = killing$ + "i"
+break
+case "j"
+killing$ = killing$ + "j"
+break
+case "k"
+killing$ = killing$ + "k"
+break
+case "l"
+killing$ = killing$ + "l"
+break
+case "m"
+killing$ = killing$ + "m"
+break
+case "n"
+killing$ = killing$ + "n"
+break
+case "o"
+killing$ = killing$ + "o"
+break
+case "p"
+killing$ = killing$ + "p"
+break
+case "q"
+killing$ = killing$ + "q"
+break
+case "r"
+killing$ = killing$ + "r"
+break
+case "s"
+killing$ = killing$ + "s"
+break
+case "t"
+killing$ = killing$ + "t"
+break
+case "u"
+killing$ = killing$ + "u"
+break
+case "v"
+killing$ = killing$ + "v"
+break
+case "w"
+killing$ = killing$ + "w"
+break
+case "x"
+killing$ = killing$ + "x"
+break
+case "y"
+killing$ = killing$ + "y"
+break
+case "z"
+killing$ = killing$ + "z"
+break
+case "tab"
+killing$ = killing$ + " "
+break
+case "!"
+killing$ = killing$ + "!"
+break
+case "?"
+killing$ = killing$ + "?"
+break
+case "."
+killing$ = killing$ + "."
+break  
+case "enter"
+mensagem$=mid$(sentence$,5)
+goto 10
+break
+case "backspace"
+killing$ = ""
+break
+end switch
+lmp()
+loop
+
